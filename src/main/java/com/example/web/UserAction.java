@@ -24,9 +24,9 @@ public class UserAction {
     }
 
     @RequestMapping("/queryById")
-    public List<User> queryAllUser(@RequestParam("id") Long id){
+    public List<User> queryById(@RequestParam("id") Long id){
 
-        System.out.print("获取到id： "+id);
+        System.out.println("获取到id： "+id);
         return userService.findById(id);
     }
 
@@ -36,12 +36,11 @@ public class UserAction {
         return userService.deleteById(id);
     }
 
-    @RequestMapping("/add")
-    public boolean deleteById(){
-
+    @RequestMapping("/add/{id}")
+    public boolean add(@PathVariable Long id){
         User u = SpringUtil.getBean(User.class);
         System.out.println(u.toString());
-        u.setId(9l);
+        u.setId(id);
         u.setName("wanghao");
         u.setUserName("WANGHAO");
         u.setPassword("123456");

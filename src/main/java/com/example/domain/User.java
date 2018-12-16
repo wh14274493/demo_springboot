@@ -1,8 +1,10 @@
 package com.example.domain;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Scope("prototype")
 public class User {
     private Long id;
     private String userName;
