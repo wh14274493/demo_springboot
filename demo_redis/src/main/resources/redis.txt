@@ -1,0 +1,2 @@
+#此项目的redis是安装在虚拟机的linux服务器上，如果出现ip可以ping通过但是redis连接超时的问题，可以试着关闭防火墙（systemctl stop firewalld.service）
+查看端口号是否启动 ps aux|grep 6379
