@@ -1,0 +1,15 @@
+cd /usr/local/redis/bin/
+#redis启动
+./redis-server /usr/local/redis/etc/redis.conf
+#端口号查找服务
+ps aux|grep 6379
+#名称查找服务
+ps -ef|grep redis
+#启动哨兵机制
+./redis-server /usr/local/redis/etc/sentinel.conf --sentinel &
+#关闭防火墙
+systemctl stop firewalld.service
+#启动ens33网卡
+ip link set ens33 up
+#添加修改IP地址
+ip addr add 192.168.13.128/24 dev ens33
