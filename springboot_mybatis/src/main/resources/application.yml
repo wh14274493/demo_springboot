@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: root
+    password: 14274493
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    test-while-idle: true
+    test-on-borrow: true
+    validation-query: SELECT 1 FROM USER
+    time-between-eviction-runs-millis: 300000
+    min-evictable-idle-time-millis: 1800000
+  redis:
+    database: 0
+    host: 192.168.13.132
+    port: 6379
+    password: wh14274493
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 10000
+
+    
+  # 缓存配置读取
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:/ehcache.xml

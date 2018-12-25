@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper{
 
     @Select("select * from user")
     @Results({
@@ -18,7 +18,7 @@ public interface UserMapper {
     List<User> findAll();
 
     @Select("select * from user where id=#{id}")
-    List<User> findById(Long id);
+    User findById(Long id);
 
 
     @Delete("delete from user where id = #{id}")

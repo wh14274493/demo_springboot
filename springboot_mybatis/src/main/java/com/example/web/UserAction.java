@@ -24,7 +24,7 @@ public class UserAction {
     }
 
     @RequestMapping("/queryById")
-    public List<User> queryById(@RequestParam("id") Long id){
+    public User queryById(@RequestParam("id") Long id){
 
         System.out.println("获取到id： "+id);
         return userService.findById(id);
