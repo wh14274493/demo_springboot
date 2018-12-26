@@ -6,6 +6,7 @@
     <modules>
         <module>demo_redis</module>
         <module>springboot_mybatis</module>
+        <module>redislock</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
