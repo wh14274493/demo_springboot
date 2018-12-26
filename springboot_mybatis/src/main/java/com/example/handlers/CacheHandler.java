@@ -1,6 +1,7 @@
 package com.example.handlers;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.domain.User;
 import com.example.services.RedisService;
 import com.example.utils.EhCacheUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -46,7 +47,7 @@ public class CacheHandler {
         }
         String redisCacheStr = redisService.getValue(key.toString());
         if (!StringUtils.isEmpty(redisCacheStr)) {
-            Object redisCache = JSONObject.parseObject(redisCacheStr,Object.class);
+            Object redisCache = JSONObject.parseObject(redisCacheStr, User.class);
             ehCacheUtils.put(cacheName, key.toString(), redisCache);
             System.out.println("从redis中成功获取数据");
             return redisCache;

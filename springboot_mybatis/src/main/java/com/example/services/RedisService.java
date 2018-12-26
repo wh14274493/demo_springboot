@@ -14,7 +14,10 @@ public class RedisService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @SuppressWarnings("rawtypes")
+    /**
+     * 调用jdk的序列化将对象存储到硬盘上
+     * 需要实体类实现Serializable接口
+     */
     @Autowired
     private RedisTemplate redisTemplate;
 
@@ -31,9 +34,9 @@ public class RedisService {
         }
         if (obj instanceof String) {
             String value = (String) obj;
-            stringRedisTemplate.opsForValue().set(hashKey, value);
+            redisTemplate.opsForValue().set(hashKey, value);
             if (timeout != null) {
-                stringRedisTemplate.expire(hashKey,timeout, TimeUnit.SECONDS);
+                redisTemplate.expire(hashKey,timeout, TimeUnit.SECONDS);
             }
             return true;
         }else if(obj instanceof List){
@@ -46,7 +49,7 @@ public class RedisService {
         if(hashKey==null||"".equals(hashKey)){
             return "FAILED TO GET VALUE";
         }
-        String value = (String)stringRedisTemplate.opsForValue().get(hashKey);
+        String value = (String)redisTemplate.opsForValue().get(hashKey);
         return value;
     }
 

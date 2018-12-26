@@ -3,9 +3,11 @@ package com.example.domain;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
+
 @Repository
 @Scope("prototype")
-public class User {
+public class User implements Serializable {
     private Long id;
     private String userName;
     private String password;
