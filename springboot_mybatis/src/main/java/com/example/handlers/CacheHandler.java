@@ -40,10 +40,10 @@ public class CacheHandler {
             key.append(o);
         }
         System.out.println("key: " + key.toString() + ",cacheName: " + cacheName);
-        Object ehCach = ehCacheUtils.get(cacheName, key.toString());
-        if (null != ehCach) {
+        Object ehCache = ehCacheUtils.get(cacheName, key.toString());
+        if (null != ehCache) {
             System.out.println("从ehcache中成功获取数据");
-            return ehCach;
+            return ehCache;
         }
         String redisCacheStr = redisService.getValue(key.toString());
         if (!StringUtils.isEmpty(redisCacheStr)) {
